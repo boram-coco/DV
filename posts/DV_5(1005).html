@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.283">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,13 +96,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
@@ -138,33 +116,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DV</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -211,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="2">
+<div id="81806642-fc4a-4109-b327-edaeb90c469d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -219,44 +199,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="sns-scatterplot" class="level1">
 <h1>sns scatterplot</h1>
-<div class="cell" data-execution_count="17">
+<div id="7628d4ca-34fe-4953-80bc-676c21410e76" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">2</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cov <span class="op">=</span> [[<span class="dv">1</span>,<span class="fl">0.7</span>],[<span class="fl">0.7</span>,<span class="dv">1</span>]]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>arr<span class="op">=</span>np.random.multivariate_normal(mean,cov,size<span class="op">=</span><span class="dv">1000</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="3dcc1510-d7ee-4c21-8444-c099576e4e55" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>np.random.multivariate_normal(mean,cov,size<span class="op">=</span><span class="dv">1000</span>).T.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>(2, 1000)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="a8a95352-ccdb-4ae2-a7da-d2f917b2d23a" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(arr)   <span class="co"># len = 2 가 나온다는 것은 첫번째와 두번째 원소에 접근할 수 있다는 말</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="d202b2e3-da98-48c4-b69c-00c8a88df4c8" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>arr[<span class="dv">0</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>(1000,)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="50c4481d-d436-4dc1-94eb-27241979b3a3" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x,y <span class="op">=</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="22">
+<div id="0a3b90c4-7c99-4728-8096-a0813e002d74" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_5(1005)_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> matplotlib을 이용한 그림</p>
-<div class="cell" data-execution_count="36">
+<div id="fa628456-68e3-429a-a541-1105c14f79f8" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x1,y1 <span class="op">=</span>  np.random.multivariate_normal([<span class="dv">0</span>,<span class="dv">0</span>],[[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]],size<span class="op">=</span><span class="dv">1000</span>).T</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x2,y2 <span class="op">=</span>  np.random.multivariate_normal([<span class="dv">2</span>,<span class="dv">2</span>],[[<span class="dv">1</span>,<span class="fl">0.7</span>],[<span class="fl">0.7</span>,<span class="dv">1</span>]],size<span class="op">=</span><span class="dv">1000</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="84bb34b3-708e-4d04-bd9d-a693df12021f" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x1,y1,<span class="st">'o'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x2,y2,<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -265,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="sns-aray" class="level2">
 <h2 class="anchored" data-anchor-id="sns-aray">sns: aray</h2>
-<div class="cell" data-execution_count="30">
+<div id="239f10a7-d125-4cce-b7f8-e5b46401b3ac" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span><span class="va">None</span>, x<span class="op">=</span>x1, y<span class="op">=</span>y1)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span><span class="va">None</span>, x<span class="op">=</span>x2, y<span class="op">=</span>y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
@@ -278,83 +258,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-wide-df" class="level2">
 <h2 class="anchored" data-anchor-id="sns-wide-df">sns: wide df</h2>
-<div class="cell" data-execution_count="35">
+<div id="532d5796-84a9-405a-b42c-bbea9262693d" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">'x'</span>:x1,<span class="st">'y'</span>:y1})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>x</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.053500</td>
-      <td>-1.258803</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-0.517300</td>
-      <td>-0.273907</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-0.938688</td>
-      <td>0.582421</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1.017930</td>
-      <td>-0.223879</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.827941</td>
-      <td>0.519745</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>995</th>
-      <td>1.317776</td>
-      <td>-0.898103</td>
-    </tr>
-    <tr>
-      <th>996</th>
-      <td>-0.054884</td>
-      <td>0.290131</td>
-    </tr>
-    <tr>
-      <th>997</th>
-      <td>-0.082623</td>
-      <td>0.971652</td>
-    </tr>
-    <tr>
-      <th>998</th>
-      <td>-0.796771</td>
-      <td>-0.140001</td>
-    </tr>
-    <tr>
-      <th>999</th>
-      <td>0.030602</td>
-      <td>0.435023</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.053500</td>
+<td>-1.258803</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.517300</td>
+<td>-0.273907</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-0.938688</td>
+<td>0.582421</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1.017930</td>
+<td>-0.223879</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.827941</td>
+<td>0.519745</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">995</td>
+<td>1.317776</td>
+<td>-0.898103</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">996</td>
+<td>-0.054884</td>
+<td>0.290131</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">997</td>
+<td>-0.082623</td>
+<td>0.971652</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">998</td>
+<td>-0.796771</td>
+<td>-0.140001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">999</td>
+<td>0.030602</td>
+<td>0.435023</td>
+</tr>
+</tbody>
 </table>
+
 <p>1000 rows × 2 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="38">
+<div id="b37708be-d253-4d4d-924f-57db2a7b2095" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>               </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>pd.DataFrame({<span class="st">'x'</span>:x1,<span class="st">'y'</span>:y1}),x<span class="op">=</span><span class="st">'x'</span>,y<span class="op">=</span><span class="st">'y'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>pd.DataFrame({<span class="st">'x'</span>:x2,<span class="st">'y'</span>:y2}),x<span class="op">=</span><span class="st">'x'</span>,y<span class="op">=</span><span class="st">'y'</span>)</span>
@@ -369,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-long-df" class="level2">
 <h2 class="anchored" data-anchor-id="sns-long-df">sns: long df</h2>
-<div class="cell" data-execution_count="44">
+<div id="0131e5ff-ba27-4221-a3e5-f60b5c313869" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.concatenate([x1,x2])</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># np.array(list(x1) + list(x2))</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x1.tolist() + x2.tolist()</span></span>
@@ -379,96 +360,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>cat<span class="op">=</span>[<span class="st">'x1'</span>]<span class="op">*</span><span class="bu">len</span>(x1) <span class="op">+</span> [<span class="st">'x2'</span>]<span class="op">*</span><span class="bu">len</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="45">
+<div id="abed0f33-ee5c-423f-aaf7-8b6a0cec0cf7" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.DataFrame({<span class="st">'x'</span>:x, <span class="st">'y'</span>:y, <span class="st">'cat'</span>:cat})</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>x</th>
-      <th>y</th>
-      <th>cat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.082929</td>
-      <td>1.218634</td>
-      <td>x1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-0.019451</td>
-      <td>-1.352701</td>
-      <td>x1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-1.253126</td>
-      <td>1.246169</td>
-      <td>x1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>-0.343648</td>
-      <td>0.078081</td>
-      <td>x1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.479097</td>
-      <td>-1.039999</td>
-      <td>x1</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1995</th>
-      <td>2.503038</td>
-      <td>2.350603</td>
-      <td>x2</td>
-    </tr>
-    <tr>
-      <th>1996</th>
-      <td>1.940601</td>
-      <td>2.356207</td>
-      <td>x2</td>
-    </tr>
-    <tr>
-      <th>1997</th>
-      <td>3.213965</td>
-      <td>2.769489</td>
-      <td>x2</td>
-    </tr>
-    <tr>
-      <th>1998</th>
-      <td>1.203818</td>
-      <td>-0.276493</td>
-      <td>x2</td>
-    </tr>
-    <tr>
-      <th>1999</th>
-      <td>1.378763</td>
-      <td>1.914046</td>
-      <td>x2</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">cat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.082929</td>
+<td>1.218634</td>
+<td>x1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.019451</td>
+<td>-1.352701</td>
+<td>x1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-1.253126</td>
+<td>1.246169</td>
+<td>x1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-0.343648</td>
+<td>0.078081</td>
+<td>x1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.479097</td>
+<td>-1.039999</td>
+<td>x1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1995</td>
+<td>2.503038</td>
+<td>2.350603</td>
+<td>x2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1996</td>
+<td>1.940601</td>
+<td>2.356207</td>
+<td>x2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1997</td>
+<td>3.213965</td>
+<td>2.769489</td>
+<td>x2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1998</td>
+<td>1.203818</td>
+<td>-0.276493</td>
+<td>x2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1999</td>
+<td>1.378763</td>
+<td>1.914046</td>
+<td>x2</td>
+</tr>
+</tbody>
 </table>
+
 <p>2000 rows × 3 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div id="d971a5b7-cea2-4555-9cfc-f5aba0580c65" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df2, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, hue<span class="op">=</span><span class="st">'cat'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>&lt;AxesSubplot:xlabel='x', ylabel='y'&gt;</code></pre>
@@ -483,33 +465,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>sns을 이용하여 matplotlib 액시즈에 그림 그리기 (<span class="math inline">\(\star\)</span>)</h1>
 <section id="예제1" class="level2">
 <h2 class="anchored" data-anchor-id="예제1">예제1</h2>
-<div class="cell" data-execution_count="50">
+<div id="00e01a5f-ef27-4c67-9cde-1162b3ca5c9d" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_5(1005)_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
+<div id="3956cb56-3db0-48a1-b5e4-fd9a027bc0ca" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
+<div id="f7e132b7-712b-4d44-b9c3-02f7ded45861" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, mypltax <span class="op">=</span> plt.subplots()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_5(1005)_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div id="762697ad-66ee-42d6-993e-c0025508ebe6" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df2, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, hue<span class="op">=</span><span class="st">'cat'</span>, ax<span class="op">=</span>mypltax)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ax라는 변수를 넣자</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>&lt;AxesSubplot:xlabel='x', ylabel='y'&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="58">
+<div id="0e8f6fb1-7c48-4fb9-beff-de4be97d4d0b" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fig  <span class="co"># 오 sns에 ax넣으니 fig에 sns가 들어옴</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <p><img src="DV_5(1005)_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
@@ -518,7 +500,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>seaborn에서 배우지 않은 내용을 matplotlib이용해서 사용가능함</li>
 </ul>
-<div class="cell" data-execution_count="60">
+<div id="00e8ef11-f27f-4114-804d-e3ddb5e6ed31" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fig, mypltax <span class="op">=</span> plt.subplots()</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df2, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, hue<span class="op">=</span><span class="st">'cat'</span>, ax<span class="op">=</span>mypltax)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>mypltax.set_title(<span class="st">'coco babo'</span>)</span>
@@ -530,7 +512,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_5(1005)_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="70">
+<div id="a0ea7ce3-4075-4b8c-b64d-efe166c1e64b" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>], <span class="st">'--o'</span>)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>x1, y<span class="op">=</span>y1, ax<span class="op">=</span>ax[<span class="dv">1</span>])</span>
@@ -544,10 +526,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="예제2" class="level2">
 <h2 class="anchored" data-anchor-id="예제2">예제2</h2>
-<div class="cell" data-execution_count="71">
+<div id="e580c03c-896f-439c-8e0f-0545684798ed" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="73">
+<div id="6fa2195c-8d5f-4103-8bed-769456112aa1" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>upload.wikimedia.org<span class="op">/</span>wikipedia<span class="op">/</span>commons<span class="op">/</span><span class="dv">0</span><span class="op">/</span><span class="dv">0</span><span class="er">8</span><span class="op">/</span>Unequalized_Hawkes_Bay_NZ.jpg </span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">'Unequalized_Hawkes_Bay_NZ.jpg'</span>,<span class="dv">0</span>) <span class="co"># 채널이 1개인 흑백이미지</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm Unequalized_Hawkes_Bay_NZ.jpg </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,7 +547,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="74">
+<div id="f493af8e-29a0-4b38-b0d9-2165dca05b4a" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img,vmin<span class="op">=</span><span class="dv">0</span>,vmax<span class="op">=</span><span class="dv">255</span>,cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7f61e88d36d0&gt;</code></pre>
@@ -574,23 +556,23 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 <p><img src="DV_5(1005)_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="78">
+<div id="583b10a4-c7bb-48f6-938e-e017cada92f4" class="cell" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>img2 <span class="op">=</span> cv2.equalizeHist(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="81">
+<div id="f94fc9fb-25f3-4ed7-9962-dc4af7d5fb34" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>img.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>(683, 1024)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="85">
+<div id="a3725185-9a42-4d8b-8080-3de11df15854" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>img.reshape(<span class="dv">683</span><span class="op">*</span><span class="dv">1024</span>,<span class="dv">1</span>) <span class="co"># 컬럼벡터</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>img.reshape(<span class="dv">683</span><span class="op">*</span><span class="dv">1024</span>) <span class="co">#길이가 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>array([127, 145, 149, ..., 146, 145, 144], dtype=uint8)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="90">
+<div id="feac06a3-7c5c-41b1-abf4-cc3400dd8459" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].imshow(img,vmin<span class="op">=</span><span class="dv">0</span>,vmax<span class="op">=</span><span class="dv">255</span>,cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#ax[0,1].hist(img.reshape(-1))</span></span>
@@ -607,7 +589,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 <ul>
 <li>ax[0,1]의 x축을 ax[1,1]의 x축과 맞춰서 비교해보고 싶다.</li>
 </ul>
-<div class="cell" data-execution_count="91">
+<div id="865ee8d2-2f10-472a-9eec-ab676650caa0" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].imshow(img,vmin<span class="op">=</span><span class="dv">0</span>,vmax<span class="op">=</span><span class="dv">255</span>,cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(img.reshape(<span class="op">-</span><span class="dv">1</span>),ax<span class="op">=</span>ax[<span class="dv">0</span>,<span class="dv">1</span>], bins<span class="op">=</span><span class="dv">15</span>, lw<span class="op">=</span><span class="dv">0</span>, kde<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'C1'</span>)</span>
@@ -627,10 +609,10 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 <h1>mpl 미세먼지 팁(2)</h1>
 <section id="축-간격조정" class="level2">
 <h2 class="anchored" data-anchor-id="축-간격조정">축 간격조정</h2>
-<div class="cell" data-execution_count="92">
+<div id="c1b849dd-f78f-428e-80ec-d2b19a0ce5de" class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="95">
+<div id="8b556c3b-1a35-4331-a4b8-10c98b9d916d" class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>ax.plot([(xi<span class="op">/</span><span class="dv">30</span>)<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> xi <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>)],<span class="st">'--o'</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_major_locator(mpl.ticker.MultipleLocator(<span class="dv">3</span>)) <span class="co"># 큰 눈금간격을 3으로</span></span>
@@ -642,7 +624,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 </section>
 <section id="축-삭제" class="level2">
 <h2 class="anchored" data-anchor-id="축-삭제">축 삭제</h2>
-<div class="cell" data-execution_count="96">
+<div id="804b1dc3-df1b-4a26-a732-386bde7d2af6" class="cell" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>ax.plot([(xi<span class="op">/</span><span class="dv">30</span>)<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> xi <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>)],<span class="st">'--o'</span>)</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_major_locator(mpl.ticker.NullLocator()) <span class="co"># x축 눈금삭제</span></span>
@@ -654,7 +636,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 </section>
 <section id="축-범위조정" class="level2">
 <h2 class="anchored" data-anchor-id="축-범위조정">축 범위조정</h2>
-<div class="cell" data-execution_count="98">
+<div id="6637938f-0367-44a8-a07f-9d14ac9b9fb8" class="cell" data-execution_count="98">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>ax.plot([(xi<span class="op">/</span><span class="dv">30</span>)<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> xi <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>)],<span class="st">'--o'</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>) </span>
@@ -671,7 +653,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 </section>
 <section id="gcf-gca" class="level2">
 <h2 class="anchored" data-anchor-id="gcf-gca">gcf, gca</h2>
-<div class="cell" data-execution_count="102">
+<div id="2758ff21-6fdf-4bb4-86a7-7ae55eedc5e7" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>])</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>fig<span class="op">=</span>plt.gcf()</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -680,24 +662,24 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   553KB/s    in 0.2s
 <p><img src="DV_5(1005)_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="100">
+<div id="3978a6c9-c1d4-45cd-bb12-d3dc8fc63bc2" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'suptitle'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="100">
 <pre><code>Text(0.5, 0.98, 'suptitle')</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="101">
+<div id="b6688c0f-9594-4946-8f54-bc1930984fd9" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="101">
 <p><img src="DV_5(1005)_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="103">
+<div id="d98d035c-5c78-450e-a3aa-20f03c784416" class="cell" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># gca: get current axes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="104">
+<div id="a3f74061-0dbe-4ba6-9c07-4832640985ea" class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'title'</span>) </span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
@@ -737,9 +719,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -775,10 +771,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -788,8 +783,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -804,6 +808,168 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -844,6 +1010,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.283">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DV</title>
+<title>DV - Data Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -48,6 +48,11 @@ ul.task-list li input[type="checkbox"] {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,7 +62,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -70,9 +76,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -90,6 +96,7 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
@@ -101,46 +108,48 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">DV</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">DV</h1>
+    <div class="quarto-title column-page">
+      <h1 class="title">Data Visualization</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page">
 
       
     
@@ -151,843 +160,259 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(20)</span></div><div class="category" data-category="FLOTLY">FLOTLY <span class="quarto-category-count">(1)</span></div><div class="category" data-category="FOLIUM">FOLIUM <span class="quarto-category-count">(2)</span></div><div class="category" data-category="MATPLOTLIB">MATPLOTLIB <span class="quarto-category-count">(4)</span></div><div class="category" data-category="PANDAS BACKEND">PANDAS BACKEND <span class="quarto-category-count">(2)</span></div><div class="category" data-category="PLOTLY">PLOTLY <span class="quarto-category-count">(3)</span></div><div class="category" data-category="PLOTNINE">PLOTNINE <span class="quarto-category-count">(5)</span></div><div class="category" data-category="SEABORN">SEABORN <span class="quarto-category-count">(2)</span></div><div class="category" data-category="boxplot">boxplot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="histogram">histogram <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pandas">pandas <span class="quarto-category-count">(4)</span></div><div class="category" data-category="자료 분석">자료 분석 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="자료분석">자료분석 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="지리정보시각화">지리정보시각화 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="통계와 시각화">통계와 시각화 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="훌륭한 시각화">훌륭한 시각화 <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
-<p>** Data Visualization **</p>
 <ul>
-<li>해당 강의노트는 전북대학교 최규빈교수님의 강의내용임</li>
-<li>데이터가 커서 분리해놓음</li>
+<li><p>guebin Choi, Professor of Statistics, Jeonbuk National University</p></li>
+<li><p><a href="https://guebin.github.io/DV2022/">github</a></p></li>
 </ul>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="지리정보시각화,PLOTLY" data-listing-date-sort="1669734000000" data-listing-file-modified-sort="1678454072544" data-listing-reading-time-sort="0.125">
-<div class="thumbnail">
-<a href="./posts/DV_13(1130).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_13(1130).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_13(1130).html">
-<h3 class="no-anchor listing-title">
-DV 13주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('지리정보시각화'); return false;">
-지리정보시각화
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTLY'); return false;">
-PLOTLY
-</div>
-</div>
-<a href="./posts/DV_13(1130).html">
-<div class="listing-description">
-두 개의 데이터
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_13(1130).html">
-<div class="listing-date">
-Nov 30, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="지리정보시각화,FOLIUM" data-listing-date-sort="1669561200000" data-listing-file-modified-sort="1678454072484" data-listing-reading-time-sort="1.115">
-<div class="thumbnail">
-<a href="./posts/DV_13(1128).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_13(1128).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_13(1128).html">
-<h3 class="no-anchor listing-title">
-DV 13주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('지리정보시각화'); return false;">
-지리정보시각화
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('FOLIUM'); return false;">
-FOLIUM
-</div>
-</div>
-<a href="./posts/DV_13(1128).html">
-<div class="listing-description">
-<code>-</code> Choropleth 맵은 정부 또는 행정 단위별위에 (geometry) 시각화 변수의 값이 (values) 어떻게 변하는지 시각화한다.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_13(1128).html">
-<div class="listing-date">
-Nov 28, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="지리정보시각화,FOLIUM,FLOTLY" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1679044852952" data-listing-reading-time-sort="1.38">
-<div class="thumbnail">
-<a href="./posts/DV_12(1121).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_12(1121).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_12(1121).html">
-<h3 class="no-anchor listing-title">
-DV 12주차
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('지리정보시각화'); return false;">
-지리정보시각화
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('FOLIUM'); return false;">
-FOLIUM
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('FLOTLY'); return false;">
-FLOTLY
-</div>
-</div>
-<a href="./posts/DV_12(1121).html">
-<div class="listing-description">
-<code>-</code> ref: folium
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_12(1121).html">
-<div class="listing-date">
-Nov 21, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="자료분석,PANDAS BACKEND,PLOTLY" data-listing-date-sort="1668524400000" data-listing-file-modified-sort="1678454072316" data-listing-reading-time-sort="1.215">
-<div class="thumbnail">
-<a href="./posts/DV_11(1116).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_11(1116).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_11(1116).html">
-<h3 class="no-anchor listing-title">
-DV 11주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('자료분석'); return false;">
-자료분석
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PANDAS BACKEND'); return false;">
-PANDAS BACKEND
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTLY'); return false;">
-PLOTLY
-</div>
-</div>
-<a href="./posts/DV_11(1116).html">
-<div class="listing-description">
-<code>-</code> 대한민국의 저출산문제
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_11(1116).html">
-<div class="listing-date">
-Nov 16, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="PANDAS BACKEND,PLOTLY" data-listing-date-sort="1668351600000" data-listing-file-modified-sort="1678454072300" data-listing-reading-time-sort="0.885">
-<div class="thumbnail">
-<a href="./posts/DV_11(1114).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_11(1114).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_11(1114).html">
-<h3 class="no-anchor listing-title">
-DV 11주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('PANDAS BACKEND'); return false;">
-PANDAS BACKEND
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTLY'); return false;">
-PLOTLY
-</div>
-</div>
-<a href="./posts/DV_11(1114).html">
-<div class="listing-description">
-<code>-</code> yahoo finance: https://finance.yahoo.com/
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_11(1114).html">
-<div class="listing-date">
-Nov 14, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="통계와 시각화,PLOTNINE" data-listing-date-sort="1667919600000" data-listing-file-modified-sort="1678454072284" data-listing-reading-time-sort="0.695">
-<div class="thumbnail">
-<a href="./posts/DV_10(1109).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_10(1109).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_10(1109).html">
-<h3 class="no-anchor listing-title">
-DV 10주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('통계와 시각화'); return false;">
-통계와 시각화
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTNINE'); return false;">
-PLOTNINE
-</div>
-</div>
-<a href="./posts/DV_10(1109).html">
-<div class="listing-description">
-<code>-</code> 버클리대학교의 입학데이터 - https://github.com/guebin/DV2022/blob/master/_notebooks/ds.pdf
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_10(1109).html">
-<div class="listing-date">
-Nov 9, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="pandas,PLOTNINE" data-listing-date-sort="1667746800000" data-listing-file-modified-sort="1678454072280" data-listing-reading-time-sort="2.435">
-<div class="thumbnail">
-<a href="./posts/DV_10(1107).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_10(1107).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_10(1107).html">
-<h3 class="no-anchor listing-title">
-DV 10주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pandas'); return false;">
-pandas
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTNINE'); return false;">
-PLOTNINE
-</div>
-</div>
-<a href="./posts/DV_10(1107).html">
-<div class="listing-description">
-<code>-</code> 데이터
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_10(1107).html">
-<div class="listing-date">
-Nov 7, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="훌륭한 시각화" data-listing-date-sort="1667314800000" data-listing-file-modified-sort="1678454072276" data-listing-reading-time-sort="3.47">
-<div class="thumbnail">
-<p><a href="./posts/DV_09(1102).html"> <img src="https://github.com/guebin/DV2021/blob/master/_notebooks/2021-11-16-FIG1.png?raw=true" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_09(1102).html">
-<h3 class="no-anchor listing-title">
-DV 9주차
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('훌륭한 시각화'); return false;">
-훌륭한 시각화
-</div>
-</div>
-<a href="./posts/DV_09(1102).html">
-<div class="listing-description">
-Cairo, A. Functional Art, The: An Introduction to Information Graphics and Visualization, New Riders, 2012. San Francisco, US.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_09(1102).html">
-<div class="listing-date">
-Nov 2, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="pandas,자료 분석,PLOTNINE" data-listing-date-sort="1666537200000" data-listing-file-modified-sort="1678779179590" data-listing-reading-time-sort="2.505">
-<div class="thumbnail">
-<a href="./posts/DV_8(1024).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_8(1024).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_8(1024).html">
-<h3 class="no-anchor listing-title">
-DV 8주차
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pandas'); return false;">
-pandas
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('자료 분석'); return false;">
-자료 분석
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTNINE'); return false;">
-PLOTNINE
-</div>
-</div>
-<a href="./posts/DV_8(1024).html">
-<div class="listing-description">
-<code>-</code> 원본데이터를 가급적 손상시키지 않으면서 데이터를 변형하고 싶음
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_8(1024).html">
-<div class="listing-date">
-Oct 24, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="통계와 시각화,PLOTNINE" data-listing-date-sort="1666105200000" data-listing-file-modified-sort="1678454072276" data-listing-reading-time-sort="1.775">
-<div class="thumbnail">
-<a href="./posts/DV_07(1019).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_07(1019).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_07(1019).html">
-<h3 class="no-anchor listing-title">
-DV 7주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('통계와 시각화'); return false;">
-통계와 시각화
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTNINE'); return false;">
-PLOTNINE
-</div>
-</div>
-<a href="./posts/DV_07(1019).html">
-<div class="listing-description">
-기상자료개방포털: https://data.kma.go.kr/cmmn/main.do
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_07(1019).html">
-<div class="listing-date">
-Oct 19, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-categories="pandas,통계와 시각화" data-listing-date-sort="1665932400000" data-listing-file-modified-sort="1678454072272" data-listing-reading-time-sort="1.925">
-<div class="thumbnail">
-<a href="./posts/DV_07(1017).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_07(1017).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_07(1017).html">
-<h3 class="no-anchor listing-title">
-DV 7주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pandas'); return false;">
-pandas
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('통계와 시각화'); return false;">
-통계와 시각화
-</div>
-</div>
-<a href="./posts/DV_07(1017).html">
-<div class="listing-description">
-4916 rows × 28 columns
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_07(1017).html">
-<div class="listing-date">
-Oct 17, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="pandas" data-listing-date-sort="1665500400000" data-listing-file-modified-sort="1678454072564" data-listing-reading-time-sort="2.625">
-<div class="thumbnail">
-<a href="./posts/DV_6(1012).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_6(1012).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_6(1012).html">
-<h3 class="no-anchor listing-title">
-DV 6주차
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pandas'); return false;">
-pandas
-</div>
-</div>
-<a href="./posts/DV_6(1012).html">
-<div class="listing-description">
-<code>-</code> 예제1: 람다표현식 (lambda expression) 자체가 하나의 오브젝트임
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_6(1012).html">
-<div class="listing-date">
-Oct 12, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-categories="PLOTNINE" data-listing-date-sort="1664982000000" data-listing-file-modified-sort="1678454072564" data-listing-reading-time-sort="4.025">
-<div class="thumbnail">
-<p><a href="./posts/DV_5(1006).html"> <img src="https://github.com/guebin/2021DV/blob/master/_notebooks/2021-10-06-fig1.jpeg?raw=true " class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_5(1006).html">
-<h3 class="no-anchor listing-title">
-DV 5주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('PLOTNINE'); return false;">
-PLOTNINE
-</div>
-</div>
-<a href="./posts/DV_5(1006).html">
-<div class="listing-description">
-<code>-</code> 데이터 시각화계의 거장
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_5(1006).html">
-<div class="listing-date">
-Oct 6, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-categories="SEABORN,MATPLOTLIB" data-listing-date-sort="1664895600000" data-listing-file-modified-sort="1678454072560" data-listing-reading-time-sort="0.225">
-<div class="thumbnail">
-<a href="./posts/DV_5(1005).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_5(1005).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_5(1005).html">
-<h3 class="no-anchor listing-title">
-DV 5주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SEABORN'); return false;">
-SEABORN
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('MATPLOTLIB'); return false;">
-MATPLOTLIB
-</div>
-</div>
-<a href="./posts/DV_5(1005).html">
-<div class="listing-description">
-<code>-</code> matplotlib을 이용한 그림
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_5(1005).html">
-<div class="listing-date">
-Oct 5, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-categories="SEABORN" data-listing-date-sort="1664290800000" data-listing-file-modified-sort="1678454072556" data-listing-reading-time-sort="0.485">
-<div class="thumbnail">
-<a href="./posts/DV_4(0928).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_4(0928).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_4(0928).html">
-<h3 class="no-anchor listing-title">
-DV 4주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SEABORN'); return false;">
-SEABORN
-</div>
-</div>
-<a href="./posts/DV_4(0928).html">
-<div class="listing-description">
-<code>-</code> 특1: 입력으로 데이터프레임을 선호한다. (matplotlib은 array를 선호)
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_4(0928).html">
-<div class="listing-date">
-Sep 28, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-categories="MATPLOTLIB" data-listing-date-sort="1664118000000" data-listing-file-modified-sort="1678454072552" data-listing-reading-time-sort="0.81">
-<div class="thumbnail">
-<a href="./posts/DV_4(0926).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_4(0926).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_4(0926).html">
-<h3 class="no-anchor listing-title">
-DV 4주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('MATPLOTLIB'); return false;">
-MATPLOTLIB
-</div>
-</div>
-<a href="./posts/DV_4(0926).html">
-<div class="listing-description">
-<code>-</code> 예시1
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_4(0926).html">
-<div class="listing-date">
-Sep 26, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-categories="MATPLOTLIB,통계와 시각화" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1678454072552" data-listing-reading-time-sort="1.95">
-<div class="thumbnail">
-<a href="./posts/DV_3(0921).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_3(0921).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_3(0921).html">
-<h3 class="no-anchor listing-title">
-DV 3주차(2)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('MATPLOTLIB'); return false;">
-MATPLOTLIB
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('통계와 시각화'); return false;">
-통계와 시각화
-</div>
-</div>
-<a href="./posts/DV_3(0921).html">
-<div class="listing-description">
-<code>-</code> 아래와 같은 자료를 수집하였다고 하자.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_3(0921).html">
-<div class="listing-date">
-Sep 21, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-categories="MATPLOTLIB" data-listing-date-sort="1663513200000" data-listing-file-modified-sort="1678454072552" data-listing-reading-time-sort="1.89">
-<div class="thumbnail">
-<p><a href="./posts/DV_3(0919).html"> <img src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_3(0919).html">
-<h3 class="no-anchor listing-title">
-DV 3주차(1)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('MATPLOTLIB'); return false;">
-MATPLOTLIB
-</div>
-</div>
-<a href="./posts/DV_3(0919).html">
-<div class="listing-description">
-<code>-</code> 예시
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_3(0919).html">
-<div class="listing-date">
-Sep 19, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-categories="통계와 시각화" data-listing-date-sort="1663081200000" data-listing-file-modified-sort="1678454072548" data-listing-reading-time-sort="0.46">
-<div class="thumbnail">
-<a href="./posts/DV_2(0914).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_2(0914).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_2(0914).html">
-<h3 class="no-anchor listing-title">
-DV 2주차
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('통계와 시각화'); return false;">
-통계와 시각화
-</div>
-</div>
-<a href="./posts/DV_2(0914).html">
-<div class="listing-description">
-<code>-</code> 히스토그램 이퀄라이제이션(https://en.wikipedia.org/wiki/Histogram_equalization)
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_2(0914).html">
-<div class="listing-date">
-Sep 14, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-categories="boxplot,histogram" data-listing-date-sort="1662303600000" data-listing-file-modified-sort="1678967008700" data-listing-reading-time-sort="2.415">
-<div class="thumbnail">
-<a href="./posts/DV_1(0910).html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/DV_1(0910).html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/DV_1(0910).html">
-<h3 class="no-anchor listing-title">
-DV 1주차
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('boxplot'); return false;">
-boxplot
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('histogram'); return false;">
-histogram
-</div>
-</div>
-<a href="./posts/DV_1(0910).html">
-<div class="listing-description">
-<strong>(예제1) 전북고등학교: 평균은 좋은 측정값인가?</strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DV_1(0910).html">
-<div class="listing-date">
-Sep 5, 2022
-</div>
-<div class="listing-author">
-김보람
-</div>
-</a>
-</div>
-</div>
-</div>
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Author
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="지리정보시각화,PLOTLY" data-listing-date-sort="1669734000000" data-listing-file-modified-sort="1679365219059" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 13주차(2)" data-listing-filename-sort="DV_13(1130).ipynb">
+<td>
+<span class="listing-date">Nov 30, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_13(1130).html" class="title listing-title">DV 13주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="1" data-categories="지리정보시각화,FOLIUM" data-listing-date-sort="1669561200000" data-listing-file-modified-sort="1678454072484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 13주차(1)" data-listing-filename-sort="DV_13(1128).ipynb">
+<td>
+<span class="listing-date">Nov 28, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_13(1128).html" class="title listing-title">DV 13주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="2" data-categories="지리정보시각화,FOLIUM,FLOTLY" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1679044973806" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 12주차" data-listing-filename-sort="DV_12(1121).ipynb">
+<td>
+<span class="listing-date">Nov 21, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_12(1121).html" class="title listing-title">DV 12주차</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="3" data-categories="자료분석,PANDAS BACKEND,PLOTLY" data-listing-date-sort="1668524400000" data-listing-file-modified-sort="1678454072316" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 11주차(2)" data-listing-filename-sort="DV_11(1116).ipynb">
+<td>
+<span class="listing-date">Nov 16, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_11(1116).html" class="title listing-title">DV 11주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="4" data-categories="PANDAS BACKEND,PLOTLY" data-listing-date-sort="1668351600000" data-listing-file-modified-sort="1678454072300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 11주차(1)" data-listing-filename-sort="DV_11(1114).ipynb">
+<td>
+<span class="listing-date">Nov 14, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_11(1114).html" class="title listing-title">DV 11주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="5" data-categories="통계와 시각화,PLOTNINE" data-listing-date-sort="1667919600000" data-listing-file-modified-sort="1678454072284" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 10주차(2)" data-listing-filename-sort="DV_10(1109).ipynb">
+<td>
+<span class="listing-date">Nov 9, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_10(1109).html" class="title listing-title">DV 10주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="6" data-categories="pandas,PLOTNINE" data-listing-date-sort="1667746800000" data-listing-file-modified-sort="1678454072280" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="DV 10주차(1)" data-listing-filename-sort="DV_10(1107).ipynb">
+<td>
+<span class="listing-date">Nov 7, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_10(1107).html" class="title listing-title">DV 10주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="7" data-categories="훌륭한 시각화" data-listing-date-sort="1667314800000" data-listing-file-modified-sort="1678454072276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="DV 9주차" data-listing-filename-sort="DV_09(1102).ipynb">
+<td>
+<span class="listing-date">Nov 2, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_09(1102).html" class="title listing-title">DV 9주차</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="8" data-categories="pandas,자료 분석,PLOTNINE" data-listing-date-sort="1666537200000" data-listing-file-modified-sort="1678779179590" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="DV 8주차" data-listing-filename-sort="DV_8(1024).ipynb">
+<td>
+<span class="listing-date">Oct 24, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_8(1024).html" class="title listing-title">DV 8주차</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="9" data-categories="통계와 시각화,PLOTNINE" data-listing-date-sort="1666105200000" data-listing-file-modified-sort="1678454072276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 7주차(2)" data-listing-filename-sort="DV_07(1019).ipynb">
+<td>
+<span class="listing-date">Oct 19, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_07(1019).html" class="title listing-title">DV 7주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="10" data-categories="pandas,통계와 시각화" data-listing-date-sort="1665932400000" data-listing-file-modified-sort="1678454072272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 7주차(1)" data-listing-filename-sort="DV_07(1017).ipynb">
+<td>
+<span class="listing-date">Oct 17, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_07(1017).html" class="title listing-title">DV 7주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="11" data-categories="pandas" data-listing-date-sort="1665500400000" data-listing-file-modified-sort="1678454072564" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="DV 6주차" data-listing-filename-sort="DV_6(1012).ipynb">
+<td>
+<span class="listing-date">Oct 12, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_6(1012).html" class="title listing-title">DV 6주차</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="12" data-categories="PLOTNINE" data-listing-date-sort="1664982000000" data-listing-file-modified-sort="1678454072564" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="DV 5주차(2)" data-listing-filename-sort="DV_5(1006).ipynb">
+<td>
+<span class="listing-date">Oct 6, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_5(1006).html" class="title listing-title">DV 5주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="13" data-categories="SEABORN,MATPLOTLIB" data-listing-date-sort="1664895600000" data-listing-file-modified-sort="1678454072560" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 5주차(1)" data-listing-filename-sort="DV_5(1005).ipynb">
+<td>
+<span class="listing-date">Oct 5, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_5(1005).html" class="title listing-title">DV 5주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="14" data-categories="SEABORN" data-listing-date-sort="1664290800000" data-listing-file-modified-sort="1678454072556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 4주차(2)" data-listing-filename-sort="DV_4(0928).ipynb">
+<td>
+<span class="listing-date">Sep 28, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_4(0928).html" class="title listing-title">DV 4주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="15" data-categories="MATPLOTLIB" data-listing-date-sort="1664118000000" data-listing-file-modified-sort="1678454072552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 4주차(1)" data-listing-filename-sort="DV_4(0926).ipynb">
+<td>
+<span class="listing-date">Sep 26, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_4(0926).html" class="title listing-title">DV 4주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="16" data-categories="MATPLOTLIB,통계와 시각화" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1678454072552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 3주차(2)" data-listing-filename-sort="DV_3(0921).ipynb">
+<td>
+<span class="listing-date">Sep 21, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_3(0921).html" class="title listing-title">DV 3주차(2)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="17" data-categories="MATPLOTLIB" data-listing-date-sort="1663513200000" data-listing-file-modified-sort="1678454072552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="DV 3주차(1)" data-listing-filename-sort="DV_3(0919).ipynb">
+<td>
+<span class="listing-date">Sep 19, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_3(0919).html" class="title listing-title">DV 3주차(1)</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="18" data-categories="통계와 시각화" data-listing-date-sort="1663081200000" data-listing-file-modified-sort="1678454072548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="DV 2주차" data-listing-filename-sort="DV_2(0914).ipynb">
+<td>
+<span class="listing-date">Sep 14, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_2(0914).html" class="title listing-title">DV 2주차</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+<tr data-index="19" data-categories="boxplot,histogram" data-listing-date-sort="1662303600000" data-listing-file-modified-sort="1678967008700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="DV 1주차" data-listing-filename-sort="DV_1(0910).ipynb">
+<td>
+<span class="listing-date">Sep 5, 2022</span>
+</td>
+<td>
+<a href="./posts/DV_1(0910).html" class="title listing-title">DV 1주차</a>
+</td>
+<td>
+<span class="listing-author">김보람 </span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -1019,9 +444,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1057,10 +496,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1070,8 +508,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1086,6 +533,168 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1126,6 +735,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

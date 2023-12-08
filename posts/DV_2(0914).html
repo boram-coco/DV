@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.283">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,7 +96,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -134,33 +111,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DV</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -206,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="2">
+<div id="76129faa-2c11-48c5-a9e1-c7b3bca1a7fb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install opencv<span class="op">-</span>python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting opencv-python
@@ -217,7 +196,7 @@ Installing collected packages: opencv-python
 Successfully installed opencv-python-4.7.0.68</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="9a1b1440-52dc-4ee4-b554-6ac354af3364" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2 </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -226,7 +205,7 @@ Successfully installed opencv-python-4.7.0.68</code></pre>
 <p><code>-</code> 히스토그램 이퀄라이제이션(https://en.wikipedia.org/wiki/Histogram_equalization)</p>
 <section id="이미지-자료-다운로드" class="level2">
 <h2 class="anchored" data-anchor-id="이미지-자료-다운로드">이미지 자료 다운로드</h2>
-<div class="cell" data-execution_count="5">
+<div id="4e84302e-20a1-4ec2-b574-75cf2c8ce547" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>upload.wikimedia.org<span class="op">/</span>wikipedia<span class="op">/</span>commons<span class="op">/</span><span class="dv">0</span><span class="op">/</span><span class="dv">0</span><span class="er">8</span><span class="op">/</span>Unequalized_Hawkes_Bay_NZ.jpg</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">'Unequalized_Hawkes_Bay_NZ.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -243,13 +222,13 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="eb6b9143-3626-4c4a-9395-a1de23940b08" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>img.shape  <span class="co"># 가로, 세로 픽셀, 채널(빨,녹,파..)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(683, 1024, 3)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="97a46ba5-216e-42e1-8e63-fc817893a705" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc8361704d0&gt;</code></pre>
@@ -264,7 +243,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <section id="비밀1-이미지는-사실-숫자들의-집합이다." class="level3">
 <h3 class="anchored" data-anchor-id="비밀1-이미지는-사실-숫자들의-집합이다.">비밀1: 이미지는 사실 숫자들의 집합이다.</h3>
 <p><code>-</code> 예시1</p>
-<div class="cell" data-execution_count="11">
+<div id="4ca2a62a-0a4c-48bc-8832-9f771b26c227" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>_img1 <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">90</span>,<span class="dv">120</span>,<span class="dv">150</span>,<span class="dv">180</span>,<span class="dv">210</span>,<span class="dv">240</span>,<span class="dv">255</span>]).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>_img1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -273,7 +252,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
        [210, 240, 255]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="254217b8-53d2-46d2-a7d9-c92d4eb9d8cc" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(_img1, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
@@ -284,7 +263,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div class="cell" data-execution_count="15">
+<div id="f8e1320f-89e7-4047-b34d-fefadca342ac" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>_img2 <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">100</span>,<span class="dv">120</span>,<span class="dv">140</span>,<span class="dv">160</span>]).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>_img2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -293,7 +272,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
        [120, 140, 160]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="e12bff8b-6f94-4f78-9812-43c71cf1228a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(_img2, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -304,7 +283,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div class="cell" data-execution_count="25">
+<div id="0c025c8e-99bf-441e-9398-956c77faf2e1" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>_img3<span class="op">=</span>np.concatenate([_img1, _img2], axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>_img3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -313,7 +292,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
        [210, 240, 255, 120, 140, 160]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="9e41b0dc-f3b2-4051-a3bb-67a2f1bcbf48" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(_img3, cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830ec8d50&gt;</code></pre>
@@ -326,17 +305,17 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <section id="비밀2-칼라이미지는-red-green-blue-의-조합으로-표현가능-다른방식도-가능" class="level3">
 <h3 class="anchored" data-anchor-id="비밀2-칼라이미지는-red-green-blue-의-조합으로-표현가능-다른방식도-가능">비밀2: 칼라이미지는 red + green + blue 의 조합으로 표현가능 (다른방식도 가능)</h3>
 <p><code>-</code> 예시1</p>
-<div class="cell" data-execution_count="42">
+<div id="6d755f84-35a3-444c-81d4-cd56d78a1427" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>r<span class="op">=</span>np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>g<span class="op">=</span>np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="45">
+<div id="32722e1f-50dd-4438-b1e7-74d5c20fe1fc" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>r[:<span class="dv">3</span>,:<span class="dv">3</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">255</span>   </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">255</span> </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="25db743f-33a7-4b9e-a261-f33995d4fe8f" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830cd4f50&gt;</code></pre>
@@ -345,7 +324,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div id="f2ae360b-65f7-46e0-81d0-1f6097e3c6ec" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830e48650&gt;</code></pre>
@@ -354,7 +333,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="48">
+<div id="d10a14ca-0a4f-45ac-8a81-d1436442a424" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830bd8950&gt;</code></pre>
@@ -363,7 +342,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="52">
+<div id="0a122e88-85bf-4054-aa37-f7554eabd671" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(r<span class="op">+</span>g<span class="op">+</span>b)   <span class="co"># 빛의 3원색..색의 3원색</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830be4f90&gt;</code></pre>
@@ -373,7 +352,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </div>
 </div>
 <p><code>-</code> 예시2: R,G,B를 같은 비율로 섞으면 무채색이 된다.</p>
-<div class="cell" data-execution_count="53">
+<div id="0d0b4633-c699-4e2d-a2e1-55282f0de952" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>) </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>) </span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>) </span>
@@ -381,7 +360,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">80</span></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">80</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="54">
+<div id="309861ea-2ab4-479f-8d77-3ffadd32d9fd" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(r<span class="op">+</span>g<span class="op">+</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830bd8d10&gt;</code></pre>
@@ -391,23 +370,23 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div class="cell" data-execution_count="56">
+<div id="8590c7b5-41d7-45e5-b22b-b310bfdd1d51" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>img.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>(683, 1024, 3)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div id="ac3d56ba-6211-4e3c-846c-c7d4234db4ed" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>img_red <span class="op">=</span> img <span class="op">*</span> <span class="dv">0</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>img_green <span class="op">=</span> img <span class="op">*</span> <span class="dv">0</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>img_blue <span class="op">=</span> img <span class="op">*</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="58">
+<div id="9a5e5420-f01c-486e-90ec-2a30733dc305" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>img_red[...,<span class="dv">0</span>] <span class="op">=</span> img[...,<span class="dv">0</span>]</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>img_green[...,<span class="dv">0</span>] <span class="op">=</span> img[...,<span class="dv">1</span>]</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>img_blue[...,<span class="dv">0</span>] <span class="op">=</span> img[...,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="59">
+<div id="aba2d9ce-c4e3-44ad-984e-ff0fdb58698b" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc8309c6ed0&gt;</code></pre>
@@ -416,7 +395,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell">
+<div id="33398351-3261-4c8c-86d7-796bf9864250" class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -424,19 +403,19 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <section id="히스토그램-이퀄라이제이션" class="level2">
 <h2 class="anchored" data-anchor-id="히스토그램-이퀄라이제이션">히스토그램 이퀄라이제이션</h2>
 <p><code>-</code> 이미지를 rgb로 각각 분리하고 각 색깔들의 히스토그램을 그려보자.</p>
-<div class="cell" data-execution_count="62">
+<div id="0d3dbe03-2f26-4597-ace8-cd0779d81175" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>img_red[:,:,<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>(699392,)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="65">
+<div id="f82a1433-e366-4aec-b846-cc3cc056e6bd" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>img_red[:,:,<span class="dv">0</span>].shape  <span class="co"># 위 699392 = 683 * 1024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>(683, 1024)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="67">
+<div id="441011c0-895b-460b-b29f-556dfc548b2d" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plt.hist(img[:,:,<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>(array([  3691.,  56282., 235628., 170392., 120545.,  60511.,  22052.,
@@ -449,7 +428,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="68">
+<div id="6fb89041-2f92-42d7-8cf9-6442a787398f" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plt.hist(img_red[:,:,<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>),bins<span class="op">=</span><span class="dv">255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>(array([1.0000e+00, 0.0000e+00, 1.0000e+00, 0.0000e+00, 0.0000e+00,
@@ -576,7 +555,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <ul>
 <li>히스토그램 그림1</li>
 </ul>
-<div class="cell" data-execution_count="72">
+<div id="6d1884cb-e82a-407a-84f1-0f5caf0a7708" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>_fig <span class="op">=</span> plt.hist(img_red[:,:,<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>),bins<span class="op">=</span><span class="dv">255</span>, <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>,<span class="dv">255</span>])</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 위의 숫자 보기 싫으니까 걍 _fig로 받으면 그림만 나온다.</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 빨간색 말고 그린, 블루도 다 같은 모양의 그림이 나옴</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -591,10 +570,10 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <li>만약에 120-200까지의 분포된 모양은 그대로 유지하면서 range를 0-255까지 늘린다면?</li>
 </ul>
 <p><code>-</code> 분포의 모양은 대략적으로 유지하면서 값을 퍼트리자</p>
-<div class="cell" data-execution_count="73">
+<div id="33a1ed22-9a15-4aa3-87ea-05f5d15386fb" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>img2_red <span class="op">=</span> cv2.equalizeHist(img[...,<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="74">
+<div id="740388a8-9bbb-4204-acbf-d89ff1e67b62" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plt.hist(img2_red.reshape(<span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>(array([59973., 57426., 82721., 73706., 61999., 76539., 72114., 72030.,
@@ -608,23 +587,23 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </div>
 </div>
 <p>히스토그램이 평평해졌네?</p>
-<div class="cell" data-execution_count="75">
+<div id="345acede-4409-422c-963d-dd19e830935d" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>_fig<span class="op">=</span>plt.hist(img2_red.reshape(<span class="op">-</span><span class="dv">1</span>), bins<span class="op">=</span><span class="dv">255</span>, <span class="bu">range</span><span class="op">=</span>(<span class="dv">0</span>,<span class="dv">255</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_2(0914)_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> red말고 다른채널에도 이와 같은 변환을 정의한다면?</p>
-<div class="cell" data-execution_count="80">
+<div id="e5311b26-3925-4657-8888-c9fb58ff883b" class="cell" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>img2<span class="op">=</span>np.stack([img2_red,img2_red,img2_red],axis<span class="op">=-</span><span class="dv">1</span>)   <span class="co"># 색깔 3개 합치기 위해서</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="81">
+<div id="2e0a5a14-d1c3-4a77-a909-8f898e1b86f2" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>img2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>(683, 1024, 3)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="82">
+<div id="00f735ea-e480-410f-8625-e3a99833194d" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc8300ea750&gt;</code></pre>
@@ -633,7 +612,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-37-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="83">
+<div id="1cf6a06b-d218-4ff9-bd5f-554518d575e6" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img) <span class="co">#원래이미지</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc83010db90&gt;</code></pre>
@@ -642,7 +621,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <p><img src="DV_2(0914)_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="85">
+<div id="d4220a5b-4eb6-4bf4-98f8-fe1bcc0dda1f" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.concatenate([img,img2],axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc8301308d0&gt;</code></pre>
@@ -654,20 +633,20 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 </section>
 <section id="히스토그램-이퀄라이제이션-흑백버전" class="level2">
 <h2 class="anchored" data-anchor-id="히스토그램-이퀄라이제이션-흑백버전">히스토그램 이퀄라이제이션 (흑백버전)</h2>
-<div class="cell" data-execution_count="89">
+<div id="637f9267-0a7f-4345-a402-a424809e8bea" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>img_black <span class="op">=</span>  cv2.imread(<span class="st">'Unequalized_Hawkes_Bay_NZ.jpg'</span>,<span class="dv">0</span>)</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 컴마하고 0하면 흑밸처리된다</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="90">
+<div id="153df6d4-c7f8-4b78-a6bc-580f9baca6b1" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>img_black.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="90">
 <pre><code>(683, 1024)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="87">
+<div id="70ada062-fe84-4620-88ae-320f86dc3e41" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>img_black2 <span class="op">=</span> cv2.equalizeHist(img_black)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="88">
+<div id="84d1b892-fc1d-4617-8652-af0f54027ddd" class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.concatenate([img_black,img_black2],axis<span class="op">=</span><span class="dv">1</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="88">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc830044090&gt;</code></pre>
@@ -681,7 +660,7 @@ Unequalized_Hawkes_ 100%[===================&gt;] 108.30K   519KB/s    in 0.2s
 <h2 class="anchored" data-anchor-id="숙제">숙제</h2>
 <p>HE(Histogram Equalization)을 이용하여 아래주소에 저장된 이미지의 명암비를 보존하라</p>
 <p>https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/hw_img.png</p>
-<div class="cell" data-execution_count="93">
+<div id="a3f1b61a-abbb-466e-a899-ac83b0a07a24" class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>guebin<span class="op">/</span><span class="dv">2021</span><span class="er">DV</span><span class="op">/</span>master<span class="op">/</span>_notebooks<span class="op">/</span>hw_img.png</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>hw <span class="op">=</span> cv2.imread(<span class="st">'hw_img.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -698,25 +677,25 @@ hw_img.png.2        100%[===================&gt;] 117.79K  --.-KB/s    in 0.01s
 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="94">
+<div id="f01abaee-51a2-4391-a15d-84e7fee9496c" class="cell" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>hw.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="94">
 <pre><code>(531, 468, 3)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="95">
+<div id="981920a0-a134-43c9-a5cc-0b1a3717667e" class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>hw_2 <span class="op">=</span> cv2.equalizeHist(hw[...,<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="96">
+<div id="60e848ab-c98e-438d-9c2f-95ad75c1f441" class="cell" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>hw_2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="96">
 <pre><code>(531, 468)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="97">
+<div id="074be8b2-9507-4d37-aa72-512954847822" class="cell" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>hw2<span class="op">=</span>np.stack([hw_2,hw_2,hw_2],axis<span class="op">=-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="99">
+<div id="6eb76a45-ae76-4496-91ba-31919357870c" class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(hw2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="99">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc82bd948d0&gt;</code></pre>
@@ -725,7 +704,7 @@ hw_img.png.2        100%[===================&gt;] 117.79K  --.-KB/s    in 0.01s
 <p><img src="DV_2(0914)_files/figure-html/cell-49-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="101">
+<div id="f3aae1da-f280-43be-bb5f-36804cf0a017" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.concatenate([hw,hw2],axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="101">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fc86b573d10&gt;</code></pre>
@@ -766,9 +745,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -804,10 +797,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -817,8 +809,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -833,6 +834,168 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -873,6 +1036,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

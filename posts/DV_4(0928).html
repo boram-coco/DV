@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.283">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,7 +96,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -137,33 +114,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DV</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -209,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="1">
+<div id="a5b7db29-30dd-4aeb-bc70-f4cf77d32ff8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -230,13 +209,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sns-boxplot" class="level1">
 <h1>sns boxplot</h1>
 <p>https://seaborn.pydata.org/generated/seaborn.boxplot.html</p>
-<div class="cell" data-execution_count="2">
+<div id="9c1e7cb2-dc3d-42bf-ab59-32c8e9f2f126" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y1<span class="op">=</span>[<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">98</span>] <span class="co"># A선생님에게 통계학을 배운 학생의 점수들</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y2<span class="op">=</span>[<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">78</span>,<span class="dv">78</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">81</span>] <span class="co"># B선생님에게 통계학을 배운 학생의 점수들 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="plt복습" class="level2">
 <h2 class="anchored" data-anchor-id="plt복습">plt복습</h2>
-<div class="cell" data-execution_count="4">
+<div id="824d2376-9664-4dce-a040-759a3926a224" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot([y1,y2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'whiskers': [&lt;matplotlib.lines.Line2D at 0x7f2a64e7a950&gt;,
@@ -262,79 +241,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-wide-df" class="level2">
 <h2 class="anchored" data-anchor-id="sns-wide-df">sns: wide df</h2>
-<div class="cell" data-execution_count="5">
+<div id="fac82289-a605-4bb9-809a-f201e357b005" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span>pd.DataFrame({<span class="dv">1</span>:y1,<span class="dv">2</span>:y2})</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>1</th>
-      <th>2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>75</td>
-      <td>76</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>75</td>
-      <td>76</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>76</td>
-      <td>77</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>76</td>
-      <td>77</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>77</td>
-      <td>78</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>77</td>
-      <td>78</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>79</td>
-      <td>80</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>79</td>
-      <td>80</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>79</td>
-      <td>80</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>98</td>
-      <td>81</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>75</td>
+<td>76</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>75</td>
+<td>76</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>76</td>
+<td>77</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>76</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>77</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>77</td>
+<td>78</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>79</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>79</td>
+<td>80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>79</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>98</td>
+<td>81</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p><code>-</code> 예시1</p>
-<div class="cell" data-execution_count="6">
+<div id="3a2a6d30-bc39-4b3d-aaea-206b56c5f8ba" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -343,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="58eebff5-84b2-428d-8b59-ad398168b9d9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(np.stack([y1,y2],axis<span class="op">=</span><span class="dv">1</span>))   <span class="co"># 잘 쓰진 않는데 된다</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -356,129 +336,130 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sns-long-df" class="level2">
 <h2 class="anchored" data-anchor-id="sns-long-df">sns: long df</h2>
 <p>value 를 넣고 그 value가 어떤 category에 있는지 넣는 방법</p>
-<div class="cell" data-execution_count="15">
+<div id="52178d06-e418-467c-a518-3d76b63f01b3" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">'score'</span>: y1<span class="op">+</span>y2, <span class="st">'class'</span>: [<span class="st">'A'</span>]<span class="op">*</span><span class="bu">len</span>(y1)<span class="op">+</span>[<span class="st">'B'</span>]<span class="op">*</span><span class="bu">len</span>(y2)})</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>score</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>75</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>75</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>76</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>76</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>77</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>77</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>79</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>79</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>79</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>98</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>76</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>76</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>77</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>77</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>78</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>78</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>80</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>80</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>80</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>81</td>
-      <td>B</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>75</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>75</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>76</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>76</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>77</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>77</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>79</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>79</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>79</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>98</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>76</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>76</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>77</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>77</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>78</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>78</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>80</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>80</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>80</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>81</td>
+<td>B</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p><code>-</code> 예시1</p>
-<div class="cell" data-execution_count="18">
+<div id="ba191ee8-ad78-4605-8d4c-09038790230b" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df2, x<span class="op">=</span><span class="st">'class'</span>, y<span class="op">=</span><span class="st">'score'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>&lt;AxesSubplot:xlabel='class', ylabel='score'&gt;</code></pre>
@@ -491,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sns-array" class="level2">
 <h2 class="anchored" data-anchor-id="sns-array">sns: array</h2>
 <p><code>-</code> 예시1</p>
-<div class="cell" data-execution_count="19">
+<div id="e86b420f-d7cd-4003-a27e-191a380b99fd" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -501,7 +482,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div class="cell" data-execution_count="20">
+<div id="25bfb170-64ba-46b0-9066-0a3001678b18" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span>y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -511,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div class="cell" data-execution_count="22">
+<div id="0f4c9948-864f-4f4a-b3c7-b1708f5aa3c9" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span>y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -525,13 +506,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sns-histplot" class="level1">
 <h1>sns histplot</h1>
 <p><code>-</code> 데이터</p>
-<div class="cell" data-execution_count="23">
+<div id="9ab8ae22-593a-441d-a87f-db98b2f3be9e" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">10000</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.randn(<span class="dv">10000</span>) <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="plt-복습" class="level2">
 <h2 class="anchored" data-anchor-id="plt-복습">plt 복습</h2>
-<div class="cell" data-execution_count="25">
+<div id="775ae215-9928-4f24-8e23-aa7a1059edc5" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.hist(x,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.hist(y,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -547,7 +528,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div class="cell" data-execution_count="27">
+<div id="7fee8e00-2599-422f-94ab-9b44e8cf88cf" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.hist([x,y])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
@@ -556,91 +537,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-wide-df-1" class="level2">
 <h2 class="anchored" data-anchor-id="sns-wide-df-1">sns: wide df</h2>
-<div class="cell" data-execution_count="28">
+<div id="0fb2ed7b-a835-4094-929e-345779dcb4f5" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span>pd.DataFrame({<span class="st">'x'</span>:x, <span class="st">'y'</span>:y})</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>x</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.392340</td>
-      <td>-0.520932</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-0.027382</td>
-      <td>2.332888</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-0.266977</td>
-      <td>0.973511</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>-0.493336</td>
-      <td>2.801266</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.282255</td>
-      <td>0.433189</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>9995</th>
-      <td>-0.752878</td>
-      <td>2.394238</td>
-    </tr>
-    <tr>
-      <th>9996</th>
-      <td>-0.212005</td>
-      <td>2.293700</td>
-    </tr>
-    <tr>
-      <th>9997</th>
-      <td>-1.118235</td>
-      <td>2.660186</td>
-    </tr>
-    <tr>
-      <th>9998</th>
-      <td>1.558492</td>
-      <td>0.886679</td>
-    </tr>
-    <tr>
-      <th>9999</th>
-      <td>-0.753399</td>
-      <td>1.977537</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.392340</td>
+<td>-0.520932</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.027382</td>
+<td>2.332888</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-0.266977</td>
+<td>0.973511</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-0.493336</td>
+<td>2.801266</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.282255</td>
+<td>0.433189</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9995</td>
+<td>-0.752878</td>
+<td>2.394238</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9996</td>
+<td>-0.212005</td>
+<td>2.293700</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997</td>
+<td>-1.118235</td>
+<td>2.660186</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998</td>
+<td>1.558492</td>
+<td>0.886679</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9999</td>
+<td>-0.753399</td>
+<td>1.977537</td>
+</tr>
+</tbody>
 </table>
+
 <p>10000 rows × 2 columns</p>
 </div>
 </div>
 </div>
 <p><code>-</code> 예시</p>
-<div class="cell" data-execution_count="30">
+<div id="3a8a6360-5439-4368-bd7a-968c9ff60029" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df1)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="a6d7e1b1-7d04-484e-beac-866b8f82a3d5" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df1,bins<span class="op">=</span><span class="dv">20</span>)  <span class="co"># 칸 조정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>&lt;AxesSubplot:ylabel='Count'&gt;</code></pre>
@@ -649,19 +631,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="fa48822c-b234-4ed2-9cf2-73dae67c64f7" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df1,bins<span class="op">=</span><span class="dv">20</span>,kde<span class="op">=</span><span class="va">True</span>)<span class="op">;</span>    <span class="co"># kde : 곡선</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
+<div id="382eb878-f6f6-4a58-8a31-5b4b96b99294" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df1,bins<span class="op">=</span><span class="dv">20</span>,kde<span class="op">=</span><span class="va">True</span>,element<span class="op">=</span><span class="st">"step"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div id="c733e9a3-5fd7-415d-869b-c3e3095ce0a9" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df1,bins<span class="op">=</span><span class="dv">20</span>,kde<span class="op">=</span><span class="va">True</span>,element<span class="op">=</span><span class="st">"step"</span>,lw<span class="op">=</span><span class="dv">5</span>) <span class="co"># mpl에 대한 존경심 확인 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>&lt;AxesSubplot:ylabel='Count'&gt;</code></pre>
@@ -673,84 +655,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-long-df-1" class="level2">
 <h2 class="anchored" data-anchor-id="sns-long-df-1">sns: long df</h2>
-<div class="cell" data-execution_count="41">
+<div id="b8241d15-8142-4abc-900a-f91552f4d5fa" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.DataFrame({<span class="st">'val'</span> : np.concatenate([x,y]), <span class="st">'var'</span>: [<span class="st">'x'</span>]<span class="op">*</span><span class="bu">len</span>(x) <span class="op">+</span> [<span class="st">'y'</span>]<span class="op">*</span><span class="bu">len</span>(y)})</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>val</th>
-      <th>var</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.392340</td>
-      <td>x</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-0.027382</td>
-      <td>x</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-0.266977</td>
-      <td>x</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>-0.493336</td>
-      <td>x</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.282255</td>
-      <td>x</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>19995</th>
-      <td>2.394238</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>19996</th>
-      <td>2.293700</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>19997</th>
-      <td>2.660186</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>19998</th>
-      <td>0.886679</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>19999</th>
-      <td>1.977537</td>
-      <td>y</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">val</th>
+<th data-quarto-table-cell-role="th">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.392340</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.027382</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-0.266977</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-0.493336</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.282255</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19995</td>
+<td>2.394238</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19996</td>
+<td>2.293700</td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19997</td>
+<td>2.660186</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19998</td>
+<td>0.886679</td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19999</td>
+<td>1.977537</td>
+<td>y</td>
+</tr>
+</tbody>
 </table>
+
 <p>20000 rows × 2 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="43">
+<div id="a58b6ef9-5172-4e00-81d9-9b2f6f7927be" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df2, x<span class="op">=</span><span class="st">'val'</span>, hue<span class="op">=</span><span class="st">'var'</span>, bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, lw<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># hue:색깔 var로 구분하겠다! </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
@@ -763,7 +746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-array-1" class="level2">
 <h2 class="anchored" data-anchor-id="sns-array-1">sns: array</h2>
-<div class="cell" data-execution_count="45">
+<div id="fcfb6c1c-c47b-43f5-8560-b196abd5cd2f" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>&lt;AxesSubplot:ylabel='Count'&gt;</code></pre>
@@ -772,7 +755,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="c4337c3a-f451-4d7d-bc8b-73215f416ce4" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(x<span class="op">=</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>&lt;AxesSubplot:ylabel='Count'&gt;</code></pre>
@@ -781,7 +764,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div id="bd2e2f29-0884-470c-acf4-45d0b37a5401" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(x<span class="op">=</span>x, color<span class="op">=</span><span class="st">'C0'</span>, bins<span class="op">=</span><span class="dv">20</span>, lw<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(x<span class="op">=</span>y, color<span class="op">=</span><span class="st">'C0'</span>, bins<span class="op">=</span><span class="dv">20</span>, lw<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
@@ -795,22 +778,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-lineplot" class="level1">
 <h1>sns lineplot</h1>
-<div class="cell" data-execution_count="48">
+<div id="2fc31fb4-8eb4-42ec-b371-067326dfb6af" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>ϵ <span class="op">=</span> np.random.randn(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="52">
+<div id="aa9aed28-4d75-46bb-bdc1-5a536feae513" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.cumsum(ϵ)  <span class="co"># 누적값 더하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="plt복습-1" class="level2">
 <h2 class="anchored" data-anchor-id="plt복습-1">plt복습</h2>
-<div class="cell" data-execution_count="53">
+<div id="16dbd288-4015-449b-9a5e-4084b81b4a85" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.plot(ϵ,<span class="st">'--o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="55">
+<div id="284ac5fb-a78e-4762-a70f-050108b0e855" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y,<span class="st">'--o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
@@ -819,7 +802,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-array-2" class="level2">
 <h2 class="anchored" data-anchor-id="sns-array-2">sns: array</h2>
-<div class="cell" data-execution_count="56">
+<div id="ea8c1f4b-a15a-4264-a18f-afabb128fefe" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>ϵ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -828,7 +811,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div id="0c865e25-681e-42fd-932c-8d7456177643" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -840,84 +823,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-wide-df-2" class="level2">
 <h2 class="anchored" data-anchor-id="sns-wide-df-2">sns: wide df</h2>
-<div class="cell" data-execution_count="60">
+<div id="84953ba1-ded1-4178-977a-339e3cdaf553" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df4 <span class="op">=</span> pd.DataFrame({<span class="st">'ϵ'</span> : ϵ , <span class="st">'y'</span> : y})</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>df4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>ϵ</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.383420</td>
-      <td>0.383420</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1.084175</td>
-      <td>1.467595</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1.142778</td>
-      <td>2.610373</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.307894</td>
-      <td>2.918267</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.237787</td>
-      <td>3.156054</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>1.308688</td>
-      <td>-10.598788</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>0.405376</td>
-      <td>-10.193412</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>-0.185070</td>
-      <td>-10.378481</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>1.055388</td>
-      <td>-9.323094</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>1.187014</td>
-      <td>-8.136079</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ϵ</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.383420</td>
+<td>0.383420</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.084175</td>
+<td>1.467595</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1.142778</td>
+<td>2.610373</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.307894</td>
+<td>2.918267</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.237787</td>
+<td>3.156054</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">95</td>
+<td>1.308688</td>
+<td>-10.598788</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>0.405376</td>
+<td>-10.193412</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>-0.185070</td>
+<td>-10.378481</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">98</td>
+<td>1.055388</td>
+<td>-9.323094</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99</td>
+<td>1.187014</td>
+<td>-8.136079</td>
+</tr>
+</tbody>
 </table>
+
 <p>100 rows × 2 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="63">
+<div id="00daaaab-c693-4603-9b67-3f6e436800dd" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -926,7 +910,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="65">
+<div id="5766113c-9ea9-4a4d-ab1d-3b6ab5037ccb" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df4, dashes<span class="op">=</span><span class="va">False</span>)   <span class="co"># dashes : 둘다 실선</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -938,96 +922,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sns-long-df-2" class="level2">
 <h2 class="anchored" data-anchor-id="sns-long-df-2">sns: long df</h2>
-<div class="cell" data-execution_count="70">
+<div id="801f0cab-87d5-4035-b9a6-5b0e2c8b13fc" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df5<span class="op">=</span> pd.DataFrame({<span class="st">'idx'</span>:<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">100</span>))<span class="op">*</span><span class="dv">2</span>,<span class="st">'val'</span>:np.concatenate([ϵ,y]),<span class="st">'cat'</span>:[<span class="st">'eps'</span>]<span class="op">*</span><span class="dv">100</span> <span class="op">+</span> [<span class="st">'y'</span>]<span class="op">*</span><span class="dv">100</span> })</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>idx</th>
-      <th>val</th>
-      <th>cat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0.383420</td>
-      <td>eps</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1.084175</td>
-      <td>eps</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>1.142778</td>
-      <td>eps</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>0.307894</td>
-      <td>eps</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>0.237787</td>
-      <td>eps</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>195</th>
-      <td>95</td>
-      <td>-10.598788</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>196</th>
-      <td>96</td>
-      <td>-10.193412</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>197</th>
-      <td>97</td>
-      <td>-10.378481</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>198</th>
-      <td>98</td>
-      <td>-9.323094</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>199</th>
-      <td>99</td>
-      <td>-8.136079</td>
-      <td>y</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">idx</th>
+<th data-quarto-table-cell-role="th">val</th>
+<th data-quarto-table-cell-role="th">cat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>0.383420</td>
+<td>eps</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1.084175</td>
+<td>eps</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>1.142778</td>
+<td>eps</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>0.307894</td>
+<td>eps</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>0.237787</td>
+<td>eps</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">195</td>
+<td>95</td>
+<td>-10.598788</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">196</td>
+<td>96</td>
+<td>-10.193412</td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">197</td>
+<td>97</td>
+<td>-10.378481</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">198</td>
+<td>98</td>
+<td>-9.323094</td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">199</td>
+<td>99</td>
+<td>-8.136079</td>
+<td>y</td>
+</tr>
+</tbody>
 </table>
+
 <p>200 rows × 3 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="71">
+<div id="9ac9c1ce-5e28-47fc-b841-3bdd65cd0535" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df5, x<span class="op">=</span><span class="st">'idx'</span>,y<span class="op">=</span><span class="st">'val'</span>,hue<span class="op">=</span><span class="st">'cat'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>&lt;AxesSubplot:xlabel='idx', ylabel='val'&gt;</code></pre>
@@ -1036,7 +1021,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-37-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="72">
+<div id="87a2042d-088c-462b-8e01-25a6c80f5c1a" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df5, x<span class="op">=</span><span class="st">'idx'</span>,y<span class="op">=</span><span class="st">'val'</span>,style<span class="op">=</span><span class="st">'cat'</span>,hue<span class="op">=</span><span class="st">'cat'</span>,markers<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>&lt;AxesSubplot:xlabel='idx', ylabel='val'&gt;</code></pre>
@@ -1045,7 +1030,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="DV_4(0928)_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="73">
+<div id="467ee71e-686c-440d-bd78-f681f41ea0bc" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df5, x<span class="op">=</span><span class="st">'idx'</span>,y<span class="op">=</span><span class="st">'val'</span>,style<span class="op">=</span><span class="st">'cat'</span>,hue<span class="op">=</span><span class="st">'cat'</span>,dashes<span class="op">=</span>[(<span class="dv">3</span>,<span class="dv">1</span>),(<span class="dv">3</span>,<span class="dv">3</span>)],markers<span class="op">=</span>[<span class="st">'o'</span>,<span class="st">'o'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>&lt;AxesSubplot:xlabel='idx', ylabel='val'&gt;</code></pre>
@@ -1058,21 +1043,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="숙제" class="level1">
 <h1>숙제</h1>
-<div class="cell" data-execution_count="74">
+<div id="d97f5687-f9ac-4207-8a1f-13a7772535ac" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> np.random.randn(<span class="dv">90</span>).cumsum() </span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> np.random.randn(<span class="dv">120</span>).cumsum()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="75">
+<div id="ddeb2964-ea26-4726-ac52-37957c11406f" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y1,<span class="st">'--o'</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>plt.plot(y2,<span class="st">'--o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_4(0928)_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="78">
+<div id="91b9d670-d89a-4a19-a63b-1bf618347808" class="cell" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ([y1,y2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="84">
+<div id="c8005ccc-081f-4895-866f-63ffe27291f8" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>y, markers<span class="op">=</span>[<span class="st">'o'</span>,<span class="st">'o'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="84">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -1113,9 +1098,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1151,10 +1150,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1164,8 +1162,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1180,6 +1187,168 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1220,6 +1389,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

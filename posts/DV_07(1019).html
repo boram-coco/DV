@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.283">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,13 +96,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
@@ -138,33 +116,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DV</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -211,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="39">
+<div id="c1c3531c-96a2-4bec-946f-43cd95202c6d" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -222,145 +202,146 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="자료생성" class="level2">
 <h2 class="anchored" data-anchor-id="자료생성">자료생성</h2>
 <p>기상자료개방포털: https://data.kma.go.kr/cmmn/main.do</p>
-<div class="cell" data-execution_count="5">
+<div id="cffa2c20-b002-4568-be00-2047fc0d49f3" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_df<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DV2022/main/posts/temp.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>지점번호</th>
-      <th>지점명</th>
-      <th>일시</th>
-      <th>평균기온(℃)</th>
-      <th>최고기온(℃)</th>
-      <th>최고기온시각</th>
-      <th>최저기온(℃)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2020-01-01</td>
-      <td>-0.5</td>
-      <td>4.3</td>
-      <td>15:09</td>
-      <td>-6.4</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2020-01-02</td>
-      <td>1.4</td>
-      <td>6.5</td>
-      <td>14:12</td>
-      <td>-3.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2020-01-03</td>
-      <td>2.6</td>
-      <td>7.6</td>
-      <td>13:32</td>
-      <td>-0.5</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2020-01-04</td>
-      <td>2.0</td>
-      <td>7.7</td>
-      <td>13:51</td>
-      <td>-2.6</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2020-01-05</td>
-      <td>2.5</td>
-      <td>8.6</td>
-      <td>14:05</td>
-      <td>-3.2</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>651</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2021-10-13</td>
-      <td>19.9</td>
-      <td>25.5</td>
-      <td>14:29</td>
-      <td>15.6</td>
-    </tr>
-    <tr>
-      <th>652</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2021-10-14</td>
-      <td>20.4</td>
-      <td>25.5</td>
-      <td>13:36</td>
-      <td>17.0</td>
-    </tr>
-    <tr>
-      <th>653</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2021-10-15</td>
-      <td>18.3</td>
-      <td>22.0</td>
-      <td>13:47</td>
-      <td>15.7</td>
-    </tr>
-    <tr>
-      <th>654</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2021-10-16</td>
-      <td>12.8</td>
-      <td>17.4</td>
-      <td>0:01</td>
-      <td>6.5</td>
-    </tr>
-    <tr>
-      <th>655</th>
-      <td>146</td>
-      <td>전주</td>
-      <td>2021-10-17</td>
-      <td>6.7</td>
-      <td>12.4</td>
-      <td>15:18</td>
-      <td>2.2</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">지점번호</th>
+<th data-quarto-table-cell-role="th">지점명</th>
+<th data-quarto-table-cell-role="th">일시</th>
+<th data-quarto-table-cell-role="th">평균기온(℃)</th>
+<th data-quarto-table-cell-role="th">최고기온(℃)</th>
+<th data-quarto-table-cell-role="th">최고기온시각</th>
+<th data-quarto-table-cell-role="th">최저기온(℃)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>146</td>
+<td>전주</td>
+<td>2020-01-01</td>
+<td>-0.5</td>
+<td>4.3</td>
+<td>15:09</td>
+<td>-6.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>146</td>
+<td>전주</td>
+<td>2020-01-02</td>
+<td>1.4</td>
+<td>6.5</td>
+<td>14:12</td>
+<td>-3.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>146</td>
+<td>전주</td>
+<td>2020-01-03</td>
+<td>2.6</td>
+<td>7.6</td>
+<td>13:32</td>
+<td>-0.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>146</td>
+<td>전주</td>
+<td>2020-01-04</td>
+<td>2.0</td>
+<td>7.7</td>
+<td>13:51</td>
+<td>-2.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>146</td>
+<td>전주</td>
+<td>2020-01-05</td>
+<td>2.5</td>
+<td>8.6</td>
+<td>14:05</td>
+<td>-3.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">651</td>
+<td>146</td>
+<td>전주</td>
+<td>2021-10-13</td>
+<td>19.9</td>
+<td>25.5</td>
+<td>14:29</td>
+<td>15.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">652</td>
+<td>146</td>
+<td>전주</td>
+<td>2021-10-14</td>
+<td>20.4</td>
+<td>25.5</td>
+<td>13:36</td>
+<td>17.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">653</td>
+<td>146</td>
+<td>전주</td>
+<td>2021-10-15</td>
+<td>18.3</td>
+<td>22.0</td>
+<td>13:47</td>
+<td>15.7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">654</td>
+<td>146</td>
+<td>전주</td>
+<td>2021-10-16</td>
+<td>12.8</td>
+<td>17.4</td>
+<td>0:01</td>
+<td>6.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">655</td>
+<td>146</td>
+<td>전주</td>
+<td>2021-10-17</td>
+<td>6.7</td>
+<td>12.4</td>
+<td>15:18</td>
+<td>2.2</td>
+</tr>
+</tbody>
 </table>
+
 <p>656 rows × 7 columns</p>
 </div>
 </div>
 </div>
 <p><code>-</code> 평균기온만 선택</p>
-<div class="cell" data-execution_count="7">
+<div id="6a27e729-a0f3-4ea9-9d5e-6ab0ce1bdbab" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.Series(_df.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0       지점번호
@@ -373,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 dtype: object</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div id="f3df5a66-ecb6-40e2-b8b5-882b1d7d04a8" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>temp<span class="op">=</span>np.array(_df.iloc[:,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -381,12 +362,12 @@ dtype: object</code></pre>
 <h2 class="anchored" data-anchor-id="숨은-진짜-상황1-온도-to-아이스크림-판매량">숨은 진짜 상황1: 온도 <span class="math inline">\(\to\)</span> 아이스크림 판매량</h2>
 <p><code>-</code> 아래와 같은 관계가 있다고 하자</p>
 <p>아이스크림 판매량 = 20 + 2 x 온도 + ϵ</p>
-<div class="cell" data-execution_count="12">
+<div id="beb82da3-43ad-4333-a54b-36f21c315844" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="bu">len</span>(temp), scale<span class="op">=</span><span class="dv">10</span>) </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>icecream <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>temp <span class="op">+</span> eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="f3bd5aa5-cc02-45df-b61a-b7e183961398" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.plot(temp, icecream, <span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"temp"</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"icecream"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -402,12 +383,12 @@ dtype: object</code></pre>
 <h2 class="anchored" data-anchor-id="숨은-진짜-상황2-온도-to-소아마비-반응수치">숨은 진짜 상황2: 온도 <span class="math inline">\(\to\)</span> 소아마비 반응수치</h2>
 <p><code>-</code> 아래와 같은 관계가 있다고 하자</p>
 <p>소아마비 반응수치 = 30 + 0.5 x 온도 + ϵ</p>
-<div class="cell" data-execution_count="17">
+<div id="ddd229df-7ba5-467e-86a8-2acd1f8e5c2c" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2</span>) </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>eps<span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="bu">len</span>(temp),scale<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>disease<span class="op">=</span> <span class="dv">30</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> temp <span class="op">+</span> eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="53f0c4e2-da3c-44d0-817e-d8e5151a5012" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.plot(temp, disease, <span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"temp"</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"disease"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -421,7 +402,7 @@ dtype: object</code></pre>
 </section>
 <section id="우리가-관측한-상황-온도는-은닉되어-있음" class="level2">
 <h2 class="anchored" data-anchor-id="우리가-관측한-상황-온도는-은닉되어-있음">우리가 관측한 상황 (온도는 은닉되어 있음)</h2>
-<div class="cell" data-execution_count="19">
+<div id="fe4540b0-e3ac-45ec-bb51-3a3feae5f116" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(icecream,disease,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"icecream"</span>,size<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"disease"</span>,size<span class="op">=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -433,7 +414,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>corr이 높아서 얼핏 생각하면 인과성이 있어보인다.</p>
-<div class="cell" data-execution_count="20">
+<div id="ef24b381-f4a8-4b09-8090-b1a042b48032" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef(icecream, disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>array([[1.        , 0.86298975],
@@ -445,14 +426,14 @@ dtype: object</code></pre>
 <section id="직관-여름만-뽑아서-plot해보자" class="level2">
 <h2 class="anchored" data-anchor-id="직관-여름만-뽑아서-plot해보자">직관: 여름만 뽑아서 plot해보자</h2>
 <p><code>-</code> temp&gt;25 (여름으로 간주) 인 관측치만 plot</p>
-<div class="cell" data-execution_count="23">
+<div id="64f86134-b024-416d-a0cc-c66f9a61cada" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.plot(icecream[temp<span class="op">&gt;</span><span class="dv">25</span>], disease[temp<span class="op">&gt;</span><span class="dv">25</span>], <span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_07(1019)_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>상관관계가 없어보인다?</p>
-<div class="cell" data-execution_count="24">
+<div id="9604a647-4ab4-4c9a-84f3-d638c4e8562c" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef(icecream[temp<span class="op">&gt;</span><span class="dv">25</span>], disease[temp<span class="op">&gt;</span><span class="dv">25</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>array([[1.        , 0.26612659],
@@ -460,7 +441,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p><code>-</code> 전체적인 산점도</p>
-<div class="cell" data-execution_count="25">
+<div id="66355b88-db0e-41b7-80da-bd75acfbd8ac" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig , ((ax1,ax2), (ax3,ax4)) <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>)) </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(temp,icecream,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">;</span> ax1.set_xlabel(<span class="st">'temp'</span>)<span class="op">;</span> ax1.set_ylabel(<span class="st">'icecream'</span>)<span class="op">;</span> ax1.set_title(<span class="st">"hidden1"</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ax2.plot(temp,disease,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">;</span> ax2.set_xlabel(<span class="st">'temp'</span>)<span class="op">;</span> ax2.set_ylabel(<span class="st">'disease'</span>)<span class="op">;</span> ax2.set_title(<span class="st">"hidden2"</span>)</span>
@@ -484,91 +465,92 @@ dtype: object</code></pre>
 </section>
 <section id="df로-자료정리" class="level2">
 <h2 class="anchored" data-anchor-id="df로-자료정리">df로 자료정리</h2>
-<div class="cell" data-execution_count="26">
+<div id="aeb2fe90-7794-42d0-9651-a7f4e37bdd97" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.DataFrame({<span class="st">'temp'</span>:temp, <span class="st">'icecream'</span>:icecream, <span class="st">'disease'</span> : disease})</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>temp</th>
-      <th>icecream</th>
-      <th>disease</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-0.5</td>
-      <td>35.243454</td>
-      <td>29.333242</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1.4</td>
-      <td>16.682436</td>
-      <td>30.643733</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2.6</td>
-      <td>19.918282</td>
-      <td>29.163804</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2.0</td>
-      <td>13.270314</td>
-      <td>32.640271</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2.5</td>
-      <td>33.654076</td>
-      <td>29.456564</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>651</th>
-      <td>19.9</td>
-      <td>68.839992</td>
-      <td>39.633906</td>
-    </tr>
-    <tr>
-      <th>652</th>
-      <td>20.4</td>
-      <td>76.554679</td>
-      <td>38.920443</td>
-    </tr>
-    <tr>
-      <th>653</th>
-      <td>18.3</td>
-      <td>68.666079</td>
-      <td>39.882650</td>
-    </tr>
-    <tr>
-      <th>654</th>
-      <td>12.8</td>
-      <td>42.771364</td>
-      <td>36.613159</td>
-    </tr>
-    <tr>
-      <th>655</th>
-      <td>6.7</td>
-      <td>30.736731</td>
-      <td>34.902513</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">temp</th>
+<th data-quarto-table-cell-role="th">icecream</th>
+<th data-quarto-table-cell-role="th">disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-0.5</td>
+<td>35.243454</td>
+<td>29.333242</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.4</td>
+<td>16.682436</td>
+<td>30.643733</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2.6</td>
+<td>19.918282</td>
+<td>29.163804</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2.0</td>
+<td>13.270314</td>
+<td>32.640271</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2.5</td>
+<td>33.654076</td>
+<td>29.456564</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">651</td>
+<td>19.9</td>
+<td>68.839992</td>
+<td>39.633906</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">652</td>
+<td>20.4</td>
+<td>76.554679</td>
+<td>38.920443</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">653</td>
+<td>18.3</td>
+<td>68.666079</td>
+<td>39.882650</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">654</td>
+<td>12.8</td>
+<td>42.771364</td>
+<td>36.613159</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">655</td>
+<td>6.7</td>
+<td>30.736731</td>
+<td>34.902513</td>
+</tr>
+</tbody>
 </table>
+
 <p>656 rows × 3 columns</p>
 </div>
 </div>
@@ -576,7 +558,7 @@ dtype: object</code></pre>
 <section id="구간세분화" class="level3">
 <h3 class="anchored" data-anchor-id="구간세분화">구간세분화</h3>
 <p>온도를 봄 여름 가을 경루.. 확인하기 위해 구간을 확인하자</p>
-<div class="cell" data-execution_count="28">
+<div id="4d7f0963-ea20-44ca-9436-691aa66939f5" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df.temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>(array([  3.,   9.,  29.,  60.,  92.,  86.,  65.,  93., 139.,  80.]),
@@ -588,7 +570,7 @@ dtype: object</code></pre>
 <p><img src="DV_07(1019)_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div id="29c9e7ed-46c7-42f1-9c13-30e2e4d8ad70" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.temp.hist() <span class="co"># 위에도 되고 이거도 되고</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>&lt;AxesSubplot:&gt;</code></pre>
@@ -598,7 +580,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p><code>-</code> 구간을 5정도로 하면 적당</p>
-<div class="cell" data-execution_count="31">
+<div id="61c42861-6b46-4534-be52-2ccfc2d34086" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cut(x): <span class="co">#</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span>: </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'Temp: &lt;0'</span></span>
@@ -616,7 +598,7 @@ dtype: object</code></pre>
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'Temp: &gt;30'</span></span>
 <span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="ba5f6bb0-28fc-4bde-9d5a-93222101ab6a" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>0      -0.5
@@ -633,114 +615,115 @@ dtype: object</code></pre>
 Name: temp, Length: 656, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="8aa8a5b5-9a8a-4f9c-be2e-deba64a0abee" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cut(<span class="op">-</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>'Temp: &lt;0'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
+<div id="28ca548b-41ac-42f3-8565-8d84ff78aee4" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>cut(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>'Temp: 0~5'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="a92fe9f1-70c3-4e20-b94c-94bc78a248ac" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.assign(temp2<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(cut,df.temp)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>temp</th>
-      <th>icecream</th>
-      <th>disease</th>
-      <th>temp2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-0.5</td>
-      <td>35.243454</td>
-      <td>29.333242</td>
-      <td>Temp: &lt;0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1.4</td>
-      <td>16.682436</td>
-      <td>30.643733</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2.6</td>
-      <td>19.918282</td>
-      <td>29.163804</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2.0</td>
-      <td>13.270314</td>
-      <td>32.640271</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2.5</td>
-      <td>33.654076</td>
-      <td>29.456564</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>651</th>
-      <td>19.9</td>
-      <td>68.839992</td>
-      <td>39.633906</td>
-      <td>Temp: 15~20</td>
-    </tr>
-    <tr>
-      <th>652</th>
-      <td>20.4</td>
-      <td>76.554679</td>
-      <td>38.920443</td>
-      <td>Temp: 20~25</td>
-    </tr>
-    <tr>
-      <th>653</th>
-      <td>18.3</td>
-      <td>68.666079</td>
-      <td>39.882650</td>
-      <td>Temp: 15~20</td>
-    </tr>
-    <tr>
-      <th>654</th>
-      <td>12.8</td>
-      <td>42.771364</td>
-      <td>36.613159</td>
-      <td>Temp: 10~15</td>
-    </tr>
-    <tr>
-      <th>655</th>
-      <td>6.7</td>
-      <td>30.736731</td>
-      <td>34.902513</td>
-      <td>Temp: 5~10</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">temp</th>
+<th data-quarto-table-cell-role="th">icecream</th>
+<th data-quarto-table-cell-role="th">disease</th>
+<th data-quarto-table-cell-role="th">temp2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-0.5</td>
+<td>35.243454</td>
+<td>29.333242</td>
+<td>Temp: &lt;0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.4</td>
+<td>16.682436</td>
+<td>30.643733</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2.6</td>
+<td>19.918282</td>
+<td>29.163804</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2.0</td>
+<td>13.270314</td>
+<td>32.640271</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2.5</td>
+<td>33.654076</td>
+<td>29.456564</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">651</td>
+<td>19.9</td>
+<td>68.839992</td>
+<td>39.633906</td>
+<td>Temp: 15~20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">652</td>
+<td>20.4</td>
+<td>76.554679</td>
+<td>38.920443</td>
+<td>Temp: 20~25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">653</td>
+<td>18.3</td>
+<td>68.666079</td>
+<td>39.882650</td>
+<td>Temp: 15~20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">654</td>
+<td>12.8</td>
+<td>42.771364</td>
+<td>36.613159</td>
+<td>Temp: 10~15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">655</td>
+<td>6.7</td>
+<td>30.736731</td>
+<td>34.902513</td>
+<td>Temp: 5~10</td>
+</tr>
+</tbody>
 </table>
+
 <p>656 rows × 4 columns</p>
 </div>
 </div>
@@ -748,7 +731,7 @@ Name: temp, Length: 656, dtype: float64</code></pre>
 </section>
 <section id="ggplot" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot">ggplot</h3>
-<div class="cell" data-execution_count="43">
+<div id="fe0b49fa-29fe-4140-ab2e-75e92ef406ea" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(data<span class="op">=</span>df.assign(temp2<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(cut,df.temp))))</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> geom_point(aes(x<span class="op">=</span><span class="st">'icecream'</span>, y<span class="op">=</span><span class="st">'disease'</span>, color<span class="op">=</span><span class="st">'temp2'</span>))</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> geom_smooth(aes(x<span class="op">=</span><span class="st">'icecream'</span>, y<span class="op">=</span><span class="st">'disease'</span>, color<span class="op">=</span><span class="st">'temp2'</span>)) <span class="co"># color별 추체선</span></span>
@@ -758,9 +741,6 @@ Name: temp, Length: 656, dtype: float64</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_07(1019)_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="43">
-<pre><code>&lt;ggplot: (8764688308729)&gt;</code></pre>
 </div>
 </div>
 <ul>
@@ -792,208 +772,208 @@ Name: temp, Length: 656, dtype: float64</code></pre>
 <h2 class="anchored" data-anchor-id="만약-아이스크림과-소아마비가-관련있는-경우라면">만약 아이스크림과 소아마비가 관련있는 경우라면?</h2>
 <p><code>-</code> 온도는 아이스크림 판매에 여전히 영향을 주지만</p>
 <p>아이스크림 판매량 = 20 + 2 x 온도 + ϵ</p>
-<div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>eps<span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="bu">len</span>(temp), scale<span class="op">=</span><span class="dv">10</span>) </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>icecream <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> temp <span class="op">+</span> eps </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4b3de6d5-be6e-4aae-b117-9c657e978835" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>eps<span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="bu">len</span>(temp), scale<span class="op">=</span><span class="dv">10</span>) </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>icecream <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> temp <span class="op">+</span> eps </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 수영장이 원인이 아니라 진짜 아이스크림을 먹고 소아마비에 걸린상황이라면?</p>
 <p>소아마비 반응수치 = 30 + 0 x 온도 + 0.15 x 아이스크림판매랑 + ϵ</p>
-<div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2</span>) </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="bu">len</span>(temp),scale<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>disease<span class="op">=</span> <span class="dv">30</span><span class="op">+</span> <span class="dv">0</span><span class="op">*</span>temp <span class="op">+</span> <span class="fl">0.15</span><span class="op">*</span>icecream <span class="op">+</span> eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1448debc-74f3-4c1a-bd8f-af978934d482" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2</span>) </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="bu">len</span>(temp),scale<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>disease<span class="op">=</span> <span class="dv">30</span><span class="op">+</span> <span class="dv">0</span><span class="op">*</span>temp <span class="op">+</span> <span class="fl">0.15</span><span class="op">*</span>icecream <span class="op">+</span> eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.DataFrame({<span class="st">'temp'</span>:temp,<span class="st">'icecream'</span>:icecream,<span class="st">'disease'</span>:disease})</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df2.assign(temp2<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(cut,df2.temp)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d0e51d65-c761-4e2d-bcb8-0a0e65f17488" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.DataFrame({<span class="st">'temp'</span>:temp,<span class="st">'icecream'</span>:icecream,<span class="st">'disease'</span>:disease})</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df2.assign(temp2<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(cut,df2.temp)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>temp</th>
-      <th>icecream</th>
-      <th>disease</th>
-      <th>temp2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-0.5</td>
-      <td>35.243454</td>
-      <td>34.453002</td>
-      <td>Temp: &lt;0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1.4</td>
-      <td>16.682436</td>
-      <td>32.389832</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2.6</td>
-      <td>19.918282</td>
-      <td>28.715350</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2.0</td>
-      <td>13.270314</td>
-      <td>35.271089</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2.5</td>
-      <td>33.654076</td>
-      <td>31.461240</td>
-      <td>Temp: 0~5</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>651</th>
-      <td>19.9</td>
-      <td>68.839992</td>
-      <td>39.693811</td>
-      <td>Temp: 15~20</td>
-    </tr>
-    <tr>
-      <th>652</th>
-      <td>20.4</td>
-      <td>76.554679</td>
-      <td>38.924088</td>
-      <td>Temp: 20~25</td>
-    </tr>
-    <tr>
-      <th>653</th>
-      <td>18.3</td>
-      <td>68.666079</td>
-      <td>41.765212</td>
-      <td>Temp: 15~20</td>
-    </tr>
-    <tr>
-      <th>654</th>
-      <td>12.8</td>
-      <td>42.771364</td>
-      <td>36.842022</td>
-      <td>Temp: 10~15</td>
-    </tr>
-    <tr>
-      <th>655</th>
-      <td>6.7</td>
-      <td>30.736731</td>
-      <td>37.715537</td>
-      <td>Temp: 5~10</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">temp</th>
+<th data-quarto-table-cell-role="th">icecream</th>
+<th data-quarto-table-cell-role="th">disease</th>
+<th data-quarto-table-cell-role="th">temp2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-0.5</td>
+<td>35.243454</td>
+<td>34.453002</td>
+<td>Temp: &lt;0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.4</td>
+<td>16.682436</td>
+<td>32.389832</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2.6</td>
+<td>19.918282</td>
+<td>28.715350</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2.0</td>
+<td>13.270314</td>
+<td>35.271089</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2.5</td>
+<td>33.654076</td>
+<td>31.461240</td>
+<td>Temp: 0~5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">651</td>
+<td>19.9</td>
+<td>68.839992</td>
+<td>39.693811</td>
+<td>Temp: 15~20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">652</td>
+<td>20.4</td>
+<td>76.554679</td>
+<td>38.924088</td>
+<td>Temp: 20~25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">653</td>
+<td>18.3</td>
+<td>68.666079</td>
+<td>41.765212</td>
+<td>Temp: 15~20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">654</td>
+<td>12.8</td>
+<td>42.771364</td>
+<td>36.842022</td>
+<td>Temp: 10~15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">655</td>
+<td>6.7</td>
+<td>30.736731</td>
+<td>37.715537</td>
+<td>Temp: 5~10</td>
+</tr>
+</tbody>
 </table>
+
 <p>656 rows × 4 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>ggplot(data<span class="op">=</span>df2.assign(temp2<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(cut,df2.temp))))<span class="op">+\</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>geom_point(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,colour<span class="op">=</span><span class="st">'temp2'</span>),alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">+\</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>geom_smooth(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,colour<span class="op">=</span><span class="st">'temp2'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="89cff9a0-8d05-4d42-b661-2a8b50f5d836" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>ggplot(data<span class="op">=</span>df2.assign(temp2<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(cut,df2.temp))))<span class="op">+\</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>geom_point(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,colour<span class="op">=</span><span class="st">'temp2'</span>),alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">+\</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>geom_smooth(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,colour<span class="op">=</span><span class="st">'temp2'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/koinup4/anaconda3/envs/py37/lib/python3.7/site-packages/plotnine/stats/smoothers.py:311: PlotnineWarning: Confidence intervals are not yet implementedfor lowess smoothings.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="DV_07(1019)_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="47">
-<pre><code>&lt;ggplot: (8764688192609)&gt;</code></pre>
 </div>
-</div>
-<div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ec562cfa-58c0-4429-8bd9-477f03ca1a84" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>temp</th>
-      <th>icecream</th>
-      <th>disease</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>temp</th>
-      <td>1.000000</td>
-      <td>0.884366</td>
-      <td>0.975609</td>
-    </tr>
-    <tr>
-      <th>icecream</th>
-      <td>0.884366</td>
-      <td>1.000000</td>
-      <td>0.862990</td>
-    </tr>
-    <tr>
-      <th>disease</th>
-      <td>0.975609</td>
-      <td>0.862990</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">temp</th>
+<th data-quarto-table-cell-role="th">icecream</th>
+<th data-quarto-table-cell-role="th">disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">temp</td>
+<td>1.000000</td>
+<td>0.884366</td>
+<td>0.975609</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">icecream</td>
+<td>0.884366</td>
+<td>1.000000</td>
+<td>0.862990</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">disease</td>
+<td>0.975609</td>
+<td>0.862990</td>
+<td>1.000000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df2.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7374f07b-1895-4493-a610-45415f0cbaee" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df2.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>temp</th>
-      <th>icecream</th>
-      <th>disease</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>temp</th>
-      <td>1.000000</td>
-      <td>0.884366</td>
-      <td>0.725505</td>
-    </tr>
-    <tr>
-      <th>icecream</th>
-      <td>0.884366</td>
-      <td>1.000000</td>
-      <td>0.830539</td>
-    </tr>
-    <tr>
-      <th>disease</th>
-      <td>0.725505</td>
-      <td>0.830539</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">temp</th>
+<th data-quarto-table-cell-role="th">icecream</th>
+<th data-quarto-table-cell-role="th">disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">temp</td>
+<td>1.000000</td>
+<td>0.884366</td>
+<td>0.725505</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">icecream</td>
+<td>0.884366</td>
+<td>1.000000</td>
+<td>0.830539</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">disease</td>
+<td>0.725505</td>
+<td>0.830539</td>
+<td>1.000000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1031,9 +1011,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1069,10 +1063,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1082,8 +1075,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1098,6 +1100,168 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1138,6 +1302,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
